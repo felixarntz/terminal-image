@@ -20,9 +20,13 @@ imagesetpixel($image, 0, 1, $blue);
 imagesetpixel($image, 1, 1, $white);
 
 imagepng($image, $dir . '/2x2.png');
+imagejpeg($image, $dir . '/2x2.jpg', 100);
+imagewebp($image, $dir . '/2x2.webp');
 imagedestroy($image);
 
 echo "Generated 2x2.png\n";
+echo "Generated 2x2.jpg\n";
+echo "Generated 2x2.webp\n";
 
 $alphaImage = imagecreatetruecolor(2, 2);
 imagealphablending($alphaImage, false);

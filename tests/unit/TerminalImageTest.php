@@ -9,10 +9,34 @@ class TerminalImageTest extends TestCase
 {
     private const PIXEL = "\u{2584}";
     private const FIXTURE_PATH = __DIR__ . '/../fixtures/2x2.png';
+    private const FIXTURE_PATH_JPG = __DIR__ . '/../fixtures/2x2.jpg';
+    private const FIXTURE_PATH_WEBP = __DIR__ . '/../fixtures/2x2.webp';
 
     public function testFileReturnsAnsiStringForPngFixture(): void
     {
         $result = TerminalImage::file(self::FIXTURE_PATH);
+
+        $this->assertIsString($result);
+        $this->assertStringContainsString(self::PIXEL, $result);
+        $this->assertStringContainsString("\033[48;2;", $result);
+        $this->assertStringContainsString("\033[38;2;", $result);
+        $this->assertStringContainsString("\033[0m", $result);
+    }
+
+    public function testFileReturnsAnsiStringForJpgFixture(): void
+    {
+        $result = TerminalImage::file(self::FIXTURE_PATH_JPG);
+
+        $this->assertIsString($result);
+        $this->assertStringContainsString(self::PIXEL, $result);
+        $this->assertStringContainsString("\033[48;2;", $result);
+        $this->assertStringContainsString("\033[38;2;", $result);
+        $this->assertStringContainsString("\033[0m", $result);
+    }
+
+    public function testFileReturnsAnsiStringForWebpFixture(): void
+    {
+        $result = TerminalImage::file(self::FIXTURE_PATH_WEBP);
 
         $this->assertIsString($result);
         $this->assertStringContainsString(self::PIXEL, $result);
@@ -45,6 +69,30 @@ class TerminalImageTest extends TestCase
     public function testBufferReturnsAnsiStringForPngData(): void
     {
         $data = file_get_contents(self::FIXTURE_PATH);
+        $result = TerminalImage::buffer($data);
+
+        $this->assertIsString($result);
+        $this->assertStringContainsString(self::PIXEL, $result);
+        $this->assertStringContainsString("\033[48;2;", $result);
+        $this->assertStringContainsString("\033[38;2;", $result);
+        $this->assertStringContainsString("\033[0m", $result);
+    }
+
+    public function testBufferReturnsAnsiStringForJpgData(): void
+    {
+        $data = file_get_contents(self::FIXTURE_PATH_JPG);
+        $result = TerminalImage::buffer($data);
+
+        $this->assertIsString($result);
+        $this->assertStringContainsString(self::PIXEL, $result);
+        $this->assertStringContainsString("\033[48;2;", $result);
+        $this->assertStringContainsString("\033[38;2;", $result);
+        $this->assertStringContainsString("\033[0m", $result);
+    }
+
+    public function testBufferReturnsAnsiStringForWebpData(): void
+    {
+        $data = file_get_contents(self::FIXTURE_PATH_WEBP);
         $result = TerminalImage::buffer($data);
 
         $this->assertIsString($result);
