@@ -1,6 +1,6 @@
 # Terminal Image (PHP) - AGENTS.md
 
-This project is a PHP port of the popular JavaScript library [`terminal-image`](https://github.com/sindresorhus/terminal-image). It allows to use the exact same functionality in PHP based projects, e.g. PHP CLI tools.
+This project is a PHP port of the popular JavaScript library [`terminal-image`](https://www.npmjs.com/package/terminal-image). It allows to use the exact same functionality in PHP based projects, e.g. PHP CLI tools.
 
 ## Critical Code Requirements
 
