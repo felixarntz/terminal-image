@@ -17,4 +17,4 @@ if (!$file) {
     exit(1);
 }
 
-echo TerminalImage::file($file);
+echo TerminalImage::file($file) . "\n";
