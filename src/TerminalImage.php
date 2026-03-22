@@ -75,17 +75,10 @@ class TerminalImage
 
         $resized = imagescale($image, $dimensions['width'], $dimensions['height']);
         if ($resized === false) {
-            @imagedestroy($image);
             throw new RuntimeException('Unable to resize image.');
         }
 
-        @imagedestroy($image);
-
-        $result = Renderer::render($resized);
-
-        @imagedestroy($resized);
-
-        return $result;
+        return Renderer::render($resized);
     }
 
     /**

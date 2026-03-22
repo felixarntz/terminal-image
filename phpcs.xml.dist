@@ -22,13 +22,7 @@
     <rule ref="PSR12"/>
 
     <!-- Check PHP 7.4 compatibility -->
-    <rule ref="PHPCompatibility">
-        <!--
-            imagedestroy() is deprecated since PHP 8.0 but required to free GD
-            resources on PHP 7.4 where GD images are not GdImage objects yet.
-        -->
-        <exclude name="PHPCompatibility.FunctionUse.RemovedFunctions.imagedestroyDeprecated"/>
-    </rule>
+    <rule ref="PHPCompatibility"/>
 
     <!-- Enforce namespace best practices -->
     <rule ref="SlevomatCodingStandard.Namespaces.DisallowGroupUse"/>
