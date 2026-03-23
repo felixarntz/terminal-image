@@ -20,6 +20,8 @@ composer require felixarntz/terminal-image
 From a file path:
 
 ```php
+use FelixArntz\TerminalImage\TerminalImage; // excluded in the following examples
+
 echo TerminalImage::file('unicorn.jpg');
 ```
 
