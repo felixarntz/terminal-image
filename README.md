@@ -98,6 +98,10 @@ Throws `InvalidArgumentException` if the data is not a valid image.
 
 When neither `width` nor `height` is provided, the image is scaled to fit within the terminal dimensions.
 
+## Credit
+
+Major credit goes to [@sindresorhus](https://github.com/sindresorhus), who created the original `terminal-image` JavaScript library.
+
 ## License
 
 MIT
