@@ -2,9 +2,9 @@
 
 A PHP port of the popular [JavaScript library of the same name](https://www.npmjs.com/package/terminal-image), enabling the display of images directly in the terminal using ANSI escape sequences.
 
-Supports JPEG, PNG, WebP, and any other format supported by PHP's GD library.
-
-Requires PHP >= 7.4 with the GD extension.
+- Supports JPEG, PNG, WebP, and any other format supported by PHP's GD library.
+- Works in any terminal that supports colors.
+- Requires PHP >= 7.4 with the GD extension.
 
 ## Installation
 
