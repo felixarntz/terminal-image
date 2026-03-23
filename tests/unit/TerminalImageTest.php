@@ -169,40 +169,35 @@ class TerminalImageTest extends TestCase
 
     public function testCheckAndGetDimensionValueWithAbsoluteInt(): void
     {
-        $method = new \ReflectionMethod(TerminalImage::class, 'checkAndGetDimensionValue');
-
+        $method = self::makeAccessibleReflectionMethod(TerminalImage::class, 'checkAndGetDimensionValue');
 
         $this->assertSame(40, $method->invoke(null, 40, 80));
     }
 
     public function testCheckAndGetDimensionValueWithPercentage(): void
     {
-        $method = new \ReflectionMethod(TerminalImage::class, 'checkAndGetDimensionValue');
-
+        $method = self::makeAccessibleReflectionMethod(TerminalImage::class, 'checkAndGetDimensionValue');
 
         $this->assertSame(40, $method->invoke(null, '50%', 80));
     }
 
     public function testCheckAndGetDimensionValueWithPercentageRoundsDown(): void
     {
-        $method = new \ReflectionMethod(TerminalImage::class, 'checkAndGetDimensionValue');
-
+        $method = self::makeAccessibleReflectionMethod(TerminalImage::class, 'checkAndGetDimensionValue');
 
         $this->assertSame(26, $method->invoke(null, '33%', 80));
     }
 
     public function testCheckAndGetDimensionValueWith100Percent(): void
     {
-        $method = new \ReflectionMethod(TerminalImage::class, 'checkAndGetDimensionValue');
-
+        $method = self::makeAccessibleReflectionMethod(TerminalImage::class, 'checkAndGetDimensionValue');
 
         $this->assertSame(80, $method->invoke(null, '100%', 80));
     }
 
     public function testCheckAndGetDimensionValueThrowsForInvalidString(): void
     {
-        $method = new \ReflectionMethod(TerminalImage::class, 'checkAndGetDimensionValue');
-
+        $method = self::makeAccessibleReflectionMethod(TerminalImage::class, 'checkAndGetDimensionValue');
 
         $this->expectException(\InvalidArgumentException::class);
         $method->invoke(null, 'invalid', 80);
@@ -210,8 +205,7 @@ class TerminalImageTest extends TestCase
 
     public function testCheckAndGetDimensionValueThrowsForZeroPercent(): void
     {
-        $method = new \ReflectionMethod(TerminalImage::class, 'checkAndGetDimensionValue');
-
+        $method = self::makeAccessibleReflectionMethod(TerminalImage::class, 'checkAndGetDimensionValue');
 
         $this->expectException(\InvalidArgumentException::class);
         $method->invoke(null, '0%', 80);
@@ -219,8 +213,7 @@ class TerminalImageTest extends TestCase
 
     public function testCheckAndGetDimensionValueThrowsForNegativePercent(): void
     {
-        $method = new \ReflectionMethod(TerminalImage::class, 'checkAndGetDimensionValue');
-
+        $method = self::makeAccessibleReflectionMethod(TerminalImage::class, 'checkAndGetDimensionValue');
 
         $this->expectException(\InvalidArgumentException::class);
         $method->invoke(null, '-10%', 80);
@@ -228,8 +221,7 @@ class TerminalImageTest extends TestCase
 
     public function testCheckAndGetDimensionValueThrowsForOver100Percent(): void
     {
-        $method = new \ReflectionMethod(TerminalImage::class, 'checkAndGetDimensionValue');
-
+        $method = self::makeAccessibleReflectionMethod(TerminalImage::class, 'checkAndGetDimensionValue');
 
         $this->expectException(\InvalidArgumentException::class);
         $method->invoke(null, '110%', 80);
@@ -237,8 +229,7 @@ class TerminalImageTest extends TestCase
 
     public function testCheckAndGetDimensionValueThrowsForFloat(): void
     {
-        $method = new \ReflectionMethod(TerminalImage::class, 'checkAndGetDimensionValue');
-
+        $method = self::makeAccessibleReflectionMethod(TerminalImage::class, 'checkAndGetDimensionValue');
 
         $this->expectException(\InvalidArgumentException::class);
         $method->invoke(null, 40.5, 80);
@@ -246,8 +237,7 @@ class TerminalImageTest extends TestCase
 
     public function testCalculateDimensionsDefaultNoOptions(): void
     {
-        $method = new \ReflectionMethod(TerminalImage::class, 'calculateDimensions');
-
+        $method = self::makeAccessibleReflectionMethod(TerminalImage::class, 'calculateDimensions');
 
         $result = $method->invoke(null, 200, 100, []);
 
@@ -262,8 +252,7 @@ class TerminalImageTest extends TestCase
 
     public function testCalculateDimensionsWithWidthOnly(): void
     {
-        $method = new \ReflectionMethod(TerminalImage::class, 'calculateDimensions');
-
+        $method = self::makeAccessibleReflectionMethod(TerminalImage::class, 'calculateDimensions');
 
         $result = $method->invoke(null, 200, 100, ['width' => 40]);
 
@@ -273,8 +262,7 @@ class TerminalImageTest extends TestCase
 
     public function testCalculateDimensionsWithHeightOnly(): void
     {
-        $method = new \ReflectionMethod(TerminalImage::class, 'calculateDimensions');
-
+        $method = self::makeAccessibleReflectionMethod(TerminalImage::class, 'calculateDimensions');
 
         $result = $method->invoke(null, 200, 100, ['height' => 5]);
 
@@ -284,8 +272,7 @@ class TerminalImageTest extends TestCase
 
     public function testCalculateDimensionsWithBothPreserveAspectRatio(): void
     {
-        $method = new \ReflectionMethod(TerminalImage::class, 'calculateDimensions');
-
+        $method = self::makeAccessibleReflectionMethod(TerminalImage::class, 'calculateDimensions');
 
         $result = $method->invoke(null, 200, 100, ['width' => 40, 'height' => 10]);
 
@@ -297,8 +284,7 @@ class TerminalImageTest extends TestCase
 
     public function testCalculateDimensionsWithBothNoPreserveAspectRatio(): void
     {
-        $method = new \ReflectionMethod(TerminalImage::class, 'calculateDimensions');
-
+        $method = self::makeAccessibleReflectionMethod(TerminalImage::class, 'calculateDimensions');
 
         $result = $method->invoke(null, 200, 100, [
             'width' => 40,
@@ -312,8 +298,7 @@ class TerminalImageTest extends TestCase
 
     public function testCalculateDimensionsClampToTerminalWidth(): void
     {
-        $method = new \ReflectionMethod(TerminalImage::class, 'calculateDimensions');
-
+        $method = self::makeAccessibleReflectionMethod(TerminalImage::class, 'calculateDimensions');
 
         $terminalColumns = \FelixArntz\TerminalImage\Terminal::getColumns();
 
@@ -324,8 +309,7 @@ class TerminalImageTest extends TestCase
 
     public function testCalculateDimensionsWithPercentageWidth(): void
     {
-        $method = new \ReflectionMethod(TerminalImage::class, 'calculateDimensions');
-
+        $method = self::makeAccessibleReflectionMethod(TerminalImage::class, 'calculateDimensions');
 
         $terminalColumns = \FelixArntz\TerminalImage\Terminal::getColumns();
         $expectedWidth = (int) floor($terminalColumns * 0.5);
@@ -337,8 +321,7 @@ class TerminalImageTest extends TestCase
 
     public function testCalculateDimensionsWithPercentageHeight(): void
     {
-        $method = new \ReflectionMethod(TerminalImage::class, 'calculateDimensions');
-
+        $method = self::makeAccessibleReflectionMethod(TerminalImage::class, 'calculateDimensions');
 
         $result = $method->invoke(null, 200, 100, ['height' => '50%']);
 
@@ -350,7 +333,7 @@ class TerminalImageTest extends TestCase
 
     public function testCheckAndGetDimensionValueThrowsForNegativeInt(): void
     {
-        $method = new \ReflectionMethod(TerminalImage::class, 'checkAndGetDimensionValue');
+        $method = self::makeAccessibleReflectionMethod(TerminalImage::class, 'checkAndGetDimensionValue');
 
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('-5 is not a valid dimension value');
@@ -359,7 +342,7 @@ class TerminalImageTest extends TestCase
 
     public function testCheckAndGetDimensionValueThrowsForZeroInt(): void
     {
-        $method = new \ReflectionMethod(TerminalImage::class, 'checkAndGetDimensionValue');
+        $method = self::makeAccessibleReflectionMethod(TerminalImage::class, 'checkAndGetDimensionValue');
 
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('0 is not a valid dimension value');
@@ -396,5 +379,17 @@ class TerminalImageTest extends TestCase
 
         $this->expectException(\InvalidArgumentException::class);
         TerminalImage::buffer($data, ['height' => 0]);
+    }
+
+    private static function makeAccessibleReflectionMethod(string $class, string $methodName): \ReflectionMethod
+    {
+        $method = new \ReflectionMethod($class, $methodName);
+
+        // In PHP 8.1 and later, `setAccessible` is no longer needed.
+        // In PHP 8.5, it is deprecated.
+        if (version_compare(PHP_VERSION, '8.1', '<')) {
+            $method->setAccessible(true);
+        }
+        return $method;
     }
 }
