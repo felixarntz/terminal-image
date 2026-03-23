@@ -11,8 +11,7 @@ This project is a PHP port of the popular JavaScript library [`terminal-image`](
 - `composer phpcs` — Run PHP_CodeSniffer to check code style
 - `composer phpcbf` — Auto-fix code style issues
 - `composer phpstan` — Run PHPStan static analysis
-- `composer test` — Alias for `test:unit`
-- `composer test:unit` — Run unit tests
+- `composer phpunit` — Run unit tests
 
 <!-- opensrc:start -->
 

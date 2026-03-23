@@ -59,6 +59,6 @@
         "phpcbf": "phpcbf",
         "phpcs": "phpcs",
         "phpstan": "phpstan analyze --memory-limit=256M",
-        "test": "phpunit"
+        "phpunit": "phpunit"
     }
 }
